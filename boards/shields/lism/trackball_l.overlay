@@ -15,12 +15,13 @@
 
 // Overrides for the input-split child node
 &left_split {
+    compatible = "zmk,input-listener";               
     status = "okay";
     device = <&tb_left>;
     input-processors = 
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>; 
 
-    scroller {
+        scroller {
         layers = <2>;
         input-processors = 
            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
