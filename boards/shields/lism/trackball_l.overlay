@@ -16,14 +16,6 @@
 // Overrides for the input-split child node
 &left_split {
     device = <&tb_left>;
-    input-processors = 
-        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;  
-//         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-//         <&zip_xy_to_scroll_mapper>;                         //スクロールモードに変更
-};
-
-&left_split {
-    device = <&tb_left>;
     scroller {
         layers = <2>;
         input-processors = 
@@ -31,4 +23,6 @@
                  <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                  <&zip_xy_to_scroll_mapper>;
     };
+//         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+//         <&zip_xy_to_scroll_mapper>;                         //スクロールモードに変更
 };
