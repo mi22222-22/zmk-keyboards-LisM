@@ -16,16 +16,17 @@
 // Overrides for the input-split child node
 &left_split {
     device = <&tb_left>;
-    input-processors = 
-        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>; 
-    
-    scroller {
+
+    // レイヤー0の通常モード（XY反転のみ）
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+
+    // レイヤー2でスクロールモードに切り替える
+    scroll_layer: scroll_layer {
+        compatible = "zmk,input-transform";
         layers = <2>;
         input-processors = 
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>, 
-            <&zip_scroll_scaler 1 16>;
-    }; 
-//         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-//         <&zip_xy_to_scroll_mapper>;                         //スクロールモードに変更
+            <&zip_xy_to_scroll_mapper>,          // スクロールに変換
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>, // XY反転
+            <&zip_scroll_scaler 1 16>;           // スクロール速度調整
+    };
 };
