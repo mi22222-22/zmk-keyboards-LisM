@@ -21,7 +21,6 @@
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>; 
 
         scroller {
-            compatible = "zmk,input-listener";
             layers = <2>;
             device = <&tb_left>;
              input-processors = 
