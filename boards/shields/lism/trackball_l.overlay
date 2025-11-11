@@ -14,19 +14,24 @@
 };
 
 // Overrides for the input-split child node
-&left_split {       
-    status = "okay";
+&left_split {
     device = <&tb_left>;
     input-processors = 
-        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>; 
-
-        scroller {
-            layers = <2>;
-            device = <&tb_left>;
-             input-processors = 
-              <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-             <&zip_xy_to_scroll_mapper>;                         //スクロールモードに変更
-    }; 
+        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;  
 //         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
 //         <&zip_xy_to_scroll_mapper>;                         //スクロールモードに変更
+};
+
+// 左リスナー（trackball 用）
+left_listener: left_listener {
+    compatible = "zmk,input-listener";
+    status = "okay";
+    device = <&left_split>;
+    
+    scroller {
+        layers = <2>;   // レイヤー2でスクロールモード
+        input-processors = 
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+            <&zip_xy_to_scroll_mapper>;  // スクロールに変換
+    };
 };
