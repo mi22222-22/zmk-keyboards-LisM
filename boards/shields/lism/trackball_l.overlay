@@ -23,7 +23,7 @@
 };
 
 // 左リスナー（trackball 用）
-left_listener: left_listener {
+&left_listener: left_listener {
     compatible = "zmk,input-listener";
     status = "okay";
     device = <&left_split>;
