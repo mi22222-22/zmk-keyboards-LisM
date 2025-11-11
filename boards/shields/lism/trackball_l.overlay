@@ -15,6 +15,7 @@
 
 // Overrides for the input-split child node
 &left_split {
+    status = "okay";
     device = <&tb_left>;
     input-processors = 
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>; 
