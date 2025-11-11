@@ -15,23 +15,9 @@
 
 // Overrides for the input-split child node
 &left_split {
-    status = "okay";
-
-    trackball_listener: trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&tb_left>;
-        input-processors = 
-            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;  
-
-        scroller {
-            layers = <2>;
-            input-processors = 
-                <&zip_xy_to_scroll_mapper>,
-                <&zip_scroll_scaler 1 16>;
-            process-next;
-        };
-    };
-    // <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-    // <&zip_xy_to_scroll_mapper>;  //スクロールモードに変更
-
+    device = <&tb_left>;
+    input-processors = 
+        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;  
+//         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+//         <&zip_xy_to_scroll_mapper>;                         //スクロールモードに変更
 };
