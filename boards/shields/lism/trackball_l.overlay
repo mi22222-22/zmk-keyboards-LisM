@@ -13,7 +13,6 @@
     };
 };
 
-// Overrides for the input-split child node
 &left_split {
     device = <&tb_left>;
 
@@ -25,14 +24,10 @@
         compatible = "zmk,input-transform";
         layers = <2>;
         input-processors = <
-            &zip_xy_to_scroll_mapper,  // スクロールに変換
-            &zip_xy_transform 3,       // XY反転
-            &zip_scroll_scaler 1 16    // スクロール速度調整
+            &zip_xy_to_scroll_mapper    /* スクロールに変換 */
+            &zip_xy_transform 3         /* XY反転 */
+            &zip_scroll_scaler 1 16     /* スクロール速度調整 */
         >;
     };
-
-    // レイヤーごとの input-transform を input-processors に登録
-    input-processors += <&scroll_layer>;
 };
-
 
