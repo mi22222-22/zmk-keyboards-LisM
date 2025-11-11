@@ -16,8 +16,9 @@
 // Overrides for the input-split child node
 &left_split {
     device = <&tb_left>;
- scroller {
-        layers = <2>;
-        input-processors = <&zip_xy_to_scroll_mapper>;
+
+    scroller {
+	    layers = <2>;
+        input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_scroll_scaler 1 128>;
     };
 };
