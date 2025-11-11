@@ -24,9 +24,14 @@
     scroll_layer: scroll_layer {
         compatible = "zmk,input-transform";
         layers = <2>;
-        input-processors = 
-            <&zip_xy_to_scroll_mapper>,          // スクロールに変換
-            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>, // XY反転
-            <&zip_scroll_scaler 1 16>;           // スクロール速度調整
+        input-processors = <
+            &zip_xy_to_scroll_mapper,                    // スクロールに変換
+            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT), // XY反転
+            &zip_scroll_scaler 1 16                      // スクロール速度調整
+        >;
     };
+
+    // レイヤーごとの input-transform を input-processors に登録
+    input-processors += <&scroll_layer>;
 };
+
