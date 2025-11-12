@@ -11,13 +11,22 @@
         spi-max-frequency = <2000000>;
         irq-gpios = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
 
+    };
+};
 
-    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+/ {
+    tb_listener: input_listener {
+        compatible = "zmk,input-listener";
+        device = <&tb_left>;
 
-    scroller {
-        layers = <2>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-                            <&zip_xy_to_scroll_mapper>;
+        // 通常のカーソル動作
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+
+        // スクロールモード（レイヤー2のときのみ有効）
+        scroller {
+            layers = <2>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+                               <&zip_xy_to_scroll_mapper>;
         };
     };
 };
