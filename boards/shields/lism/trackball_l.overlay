@@ -10,6 +10,12 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+
+    scroller {
+        layers = <2>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+                            <&zip_xy_to_scroll_mapper>;
+        };
     };
 };
 
@@ -20,9 +26,4 @@
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;  
 //         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
 //         <&zip_xy_to_scroll_mapper>;                         //スクロールモードに変更
-     scroller {
-        layers = <2>;
-        input-processors =  <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-                            <&zip_xy_to_scroll_mapper>;
-    };
 };
