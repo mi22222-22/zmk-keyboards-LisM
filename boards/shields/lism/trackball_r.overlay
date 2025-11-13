@@ -19,10 +19,11 @@
     device = <&left_split>;  // 左トラックボールを参照
 
     scroller {
-        layers = <2>;  // レイヤー2の時だけスクロール
+        layers = <2>;
         input-processors = 
-            <&zip_xy_to_scroll_mapper>,   // マウス動きをスクロールに変換
-            <&zip_scroll_scaler 1 16>;    // スクロール感度調整
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>, // 座標変換を追加
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 16>;
     };
 };
 
