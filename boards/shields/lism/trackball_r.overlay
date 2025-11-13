@@ -16,6 +16,12 @@
 // 左（split経由）のリスナーを有効化
 &left_listener {
     status = "okay";
+     scroller {
+        layers = <2>;
+        input-processors = 
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 16>;
+    };
 };
 
 // 右（中央直結）のリスナーを有効化し、deviceを紐付け
