@@ -3,4 +3,13 @@
 // 左（split経由）のリスナーを有効化
 &left_listener {
     status = "okay";
+    device = <&left_split>;  // 左トラックボールを参照
+
+    scroller {
+        layers = <2>;
+        input-processors = 
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>, // 座標変換を追加
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 16>;
+    };
 };
