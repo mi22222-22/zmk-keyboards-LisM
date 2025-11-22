@@ -1,4 +1,5 @@
 #include "non_trackball.overlay"
+#include <dt-bindings/zmk/input_transform.h>
 
 // 左（split経由）のリスナーを有効化
 &left_listener {
