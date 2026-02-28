@@ -7,7 +7,7 @@
     device = <&left_split>;  // 左トラックボールを参照
 
     scroller {
-        layers = <1>;
+        layers = <2>;
         input-processors = <
             &zip_xy_to_scroll_mapper
             &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
